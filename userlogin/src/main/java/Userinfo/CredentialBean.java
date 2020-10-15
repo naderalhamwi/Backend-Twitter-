@@ -3,11 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.te4.userlogin;
+package Userinfo;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
+import com.te4.userlogin.ConnectionFactory;
+import com.te4.userlogin.ConnectionFactory;
 import javax.ejb.Stateless;
-import com.te4.userlogin.resources.Credential;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -27,14 +28,16 @@ public class CredentialBean {
         int colon = basicAuth.indexOf(":");
         String username = basicAuth.substring(0, colon);
         String password = basicAuth.substring(colon+1);
-        return new Credential(username, password);
+        String email = basicAuth.substring(colon+2);
+        String phonenumber = basicAuth.substring(colon+3);
+        return new Credential(username, password, email, phonenumber);
     }
     
     public int saveCredential(Credential credentials){
         try (Connection con = ConnectionFactory.getConnection()){
             String hashedpassword = BCrypt.withDefaults().hashToString(12, credentials.getPassword().toCharArray());
             Statement stmt = con.createStatement();
-            String sql = String.format("INSERT INTO users VALUES ('%s','%s')", credentials.getUsername(), hashedpassword);
+            String sql = String.format("INSERT INTO users VALUES ('%s','%s', '%s', '%s')", credentials.getUsername(), hashedpassword, credentials.getEmail(), credentials.getPhonenumber());
             return stmt.executeUpdate(sql);
         } catch (Exception e) {
             System.out.println("Error CredentialBean.saveCredential: " +e.getMessage());
@@ -63,7 +66,7 @@ public class CredentialBean {
     public int deleteUser(Credential credential){
         try (Connection con = ConnectionFactory.getConnection()){
             Statement stmt = con.createStatement();
-            String sql = String.format("DELETE FROM users WHERE name='%s'", credential.getUsername());
+            String sql = String.format("DELETE FROM users WHERE email='%s'", credential.getEmail());
             return stmt.executeUpdate(sql);
         } catch (Exception e) {
             return 0;

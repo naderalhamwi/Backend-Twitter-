@@ -3,10 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.te4.userlogin;
+package Userinfo;
 
 import com.google.gson.Gson;
-import com.te4.userlogin.resources.Credential;
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -39,8 +38,11 @@ public class CredentialResource {
     }
     
     @POST
-    public Response createUser(@HeaderParam("Authorization") String Authorization){
-        Credential credential = credentialBean.createCredential(Authorization);
+    @Consumes(MediaType.TEXT_PLAIN)
+    public Response createUserJson(String Passowrd){
+        Gson gson = new Gson();
+        Credential credential = gson.fromJson(Passowrd, Credential.class);
+        
         if(credentialBean.saveCredential(credential) == 1){
            return Response.status(Response.Status.CREATED).build();
         }else{
@@ -49,8 +51,11 @@ public class CredentialResource {
     }
     
     @DELETE
-    public Response deleteUser(@HeaderParam("Authorization") String Authorization){
-        Credential credential = credentialBean.createCredential(Authorization);
+    @Consumes(MediaType.TEXT_PLAIN)
+    public Response deleteUser(String email){
+        Gson gson = new Gson();
+        Credential credential = gson.fromJson(email, Credential.class);
+        
         if(credentialBean.deleteUser(credential) == 1){
             return Response.ok("Welcome to our sectrer res api").build();
         }else{
@@ -59,10 +64,24 @@ public class CredentialResource {
     }
     
     @PUT
-    //@Consumes(MediaType.APPLICATION_JSON)
-    public Response changeUsser(String Passowrd, @HeaderParam("Authorization") String Authorization){
-        //Gson gson = new Gson();
-        //Credential credential = gson.fromJson(Passowrd, Credential.class);
+    @Consumes(MediaType.TEXT_PLAIN)
+    public Response changeUsserJson(String Passowrd){
+        Gson gson = new Gson();
+        Credential credential = gson.fromJson(Passowrd, Credential.class);
+        
+        //Credential credential = credentialBean.createCredential(Authorization);
+        
+        System.out.println(credential.getUsername());
+        
+        if(credentialBean.changeUsser(credential) == 1){
+            return Response.ok("Welcome to our sectrer res api").build();
+        }else{
+            return Response.status(Response.Status.BAD_REQUEST).build();
+        }
+    }
+    
+    @PUT
+    public Response changeUsserText(@HeaderParam("Authorization") String Authorization){
         
         Credential credential = credentialBean.createCredential(Authorization);
         
