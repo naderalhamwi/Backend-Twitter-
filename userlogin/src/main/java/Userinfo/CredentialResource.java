@@ -28,8 +28,10 @@ public class CredentialResource {
     CredentialBean credentialBean;
     
     @GET
-    public Response checkUser(@HeaderParam("Authorization") String Authorization){
-        Credential credential = credentialBean.createCredential(Authorization);
+    public Response checkUser(@HeaderParam("Authorization") String authorization){
+        Credential credential = credentialBean.createCredential(authorization);
+        System.out.println(credential.getEmail());
+        System.out.println(credential.getPassword());
         if(credentialBean.checkCredentials(credential)){
             return Response.ok("Welcome to our sectrer res api").build();
         }else{
@@ -65,25 +67,11 @@ public class CredentialResource {
     
     @PUT
     @Consumes(MediaType.TEXT_PLAIN)
-    public Response changeUsserJson(String Passowrd){
+    public Response changeUsserJson(String user){
         Gson gson = new Gson();
-        Credential credential = gson.fromJson(Passowrd, Credential.class);
+        Credential credential = gson.fromJson(user, Credential.class);
         
         //Credential credential = credentialBean.createCredential(Authorization);
-        
-        System.out.println(credential.getUsername());
-        
-        if(credentialBean.changeUsser(credential) == 1){
-            return Response.ok("Welcome to our sectrer res api").build();
-        }else{
-            return Response.status(Response.Status.BAD_REQUEST).build();
-        }
-    }
-    
-    @PUT
-    public Response changeUsserText(@HeaderParam("Authorization") String Authorization){
-        
-        Credential credential = credentialBean.createCredential(Authorization);
         
         System.out.println(credential.getUsername());
         

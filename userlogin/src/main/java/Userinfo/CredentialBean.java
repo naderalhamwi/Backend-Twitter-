@@ -26,11 +26,9 @@ public class CredentialBean {
         byte[] bytes = Base64.getDecoder().decode(basicAuth);
         basicAuth = new String(bytes);
         int colon = basicAuth.indexOf(":");
-        String username = basicAuth.substring(0, colon);
+        String email = basicAuth.substring(0, colon);
         String password = basicAuth.substring(colon+1);
-        String email = basicAuth.substring(colon+2);
-        String phonenumber = basicAuth.substring(colon+3);
-        return new Credential(username, password, email, phonenumber);
+        return new Credential(email, password);
     }
     
     public int saveCredential(Credential credentials){
@@ -48,7 +46,7 @@ public class CredentialBean {
     public boolean checkCredentials(Credential credential){
         try (Connection con = ConnectionFactory.getConnection()){
             Statement stmt = con.createStatement();
-            String sql = String.format("SELECT * FROM users WHERE name='%s'", credential.getUsername());
+            String sql = String.format("SELECT * FROM users WHERE email='%s'", credential.getEmail());
             ResultSet data = stmt.executeQuery(sql);
             if(data.next()){
                 String bcryptHashString = data.getString("hashed_password");
@@ -78,7 +76,7 @@ public class CredentialBean {
         try (Connection con = ConnectionFactory.getConnection()){
             String hashedpassword = BCrypt.withDefaults().hashToString(12, credential.getPassword().toCharArray());
             Statement stmt = con.createStatement();
-            String sql = String.format("UPDATE users SET password='%s' WHERE name='%s'", hashedpassword, credential.getUsername());
+            String sql = String.format("UPDATE users SET password='%s' WHERE email='%s'", hashedpassword, credential.getEmail());
             return stmt.executeUpdate(sql);
         } catch (Exception e) {
             return 0;

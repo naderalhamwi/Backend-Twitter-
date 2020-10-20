@@ -1,0 +1,95 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+
+.mainlogin {
+  display: -ms-grid;
+  display: grid;
+      grid-template-areas: "loginsection rigistersection";
+  height: 100%;
+}
+
+.mainlogin #loginsection {
+  background-color: #EAEAEA;
+}
+
+.mainlogin #loginsection button {
+  border: 1px solid black;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0);
+  position: absolute;
+  width: 145px;
+  height: 30px;
+  left: 800px;
+  top: 20px;
+}
+
+.mainlogin #loginsection form {
+  position: absolute;
+  left: 258px;
+  top: 414px;
+}
+
+.mainlogin #loginsection form input {
+  width: 435px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0);
+  border: 1px solid #000000;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 5px;
+}
+
+.mainlogin #loginsection form input:last-child {
+  position: relative;
+  width: 145px;
+  left: 145px;
+}
+
+.mainlogin #rigistersection {
+  background-color: #272822;
+}
+
+.mainlogin #rigistersection button {
+  color: #F5732A;
+  border: 1px solid #FFFFFF;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0);
+  position: absolute;
+  width: 145px;
+  height: 30px;
+  left: 970px;
+  top: 20px;
+}
+
+.mainlogin #rigistersection form {
+  position: absolute;
+  left: 1217px;
+  top: 333px;
+  color: white;
+}
+
+.mainlogin #rigistersection form input {
+  color: #F5732A;
+  width: 435px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0);
+  border: 1px solid white;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 5px;
+}
+
+.mainlogin #rigistersection form input:last-child {
+  color: #F5732A;
+  position: relative;
+  width: 145px;
+  left: 145px;
+}
+/*# sourceMappingURL=style.css.map */

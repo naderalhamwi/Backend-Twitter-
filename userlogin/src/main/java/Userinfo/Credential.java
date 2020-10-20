@@ -18,8 +18,8 @@ public class Credential {
     public Credential() {
     }
 
-    public Credential(String username, String password) {
-        this.username = username;
+    public Credential(String email, String password) {
+        this.email = email;
         this.password = password;
     }
 
@@ -70,7 +70,4 @@ public class Credential {
     public void setPhonenumber(String phonenumber) {
         this.phonenumber = phonenumber;
     }
-    
-    
-    
 }
