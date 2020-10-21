@@ -8,26 +8,27 @@
     <body>
         <main class="mainlogin">
             <section id="loginsection">
-                <button id="loginbutton">Back</button>
-                <form action="Home.html">
+                <h2>login</h2>
+                <form name="loginform">
                     <label for="Name">E-mail</label><br><br>
-                    <input type="text" id="Name"><br><br>
+                    <input type="text" name="email"><br><br>
 
                     <label for="lname">Password</label><br><br>
-                    <input type="password" id="Password"><br><br>
+                    <input type="password" name="password"><br><br>
 
-                    <input type="submit" value="Login">
+                    <input type="submit" value="Login" id="loginB">
                 </form>
             </section>
 
             <section id="rigistersection">
-                <button id="BackrigsterButton">Back</button>
-                <form action="Home.html">
-                    <label for="Name">Name</label><br><br>
-                    <input type="text" id="Name"><br><br>
+                <h2>sign up </h2>
+               <form action="" name="rigisterform">
+
+                    <label form="name">Name</label><br><br>
+                    <input type="text" name="name" value=""><br><br>
 
                     <label for="password">Password</label><br><br>
-                    <input type="password" id="Password"><br><br>
+                    <input type="password" ><br><br>
 
                     <label for="email">E-mail</label><br><br>
                     <input type="email" id="Email"><br><br>
@@ -35,9 +36,10 @@
                     <label for="lname">phone number</label><br><br>
                     <input type="PhobeNumber" id="PhobeNumber"><br><br>
 
-                    <input type="submit" value="Register">
+                    <input type="submit" value="Register" id="getData">
                 </form>
             </section>
+
         </main>
         <script src="app.js"></script>
     </body>

@@ -30,8 +30,6 @@ public class CredentialResource {
     @GET
     public Response checkUser(@HeaderParam("Authorization") String authorization){
         Credential credential = credentialBean.createCredential(authorization);
-        System.out.println(credential.getEmail());
-        System.out.println(credential.getPassword());
         if(credentialBean.checkCredentials(credential)){
             return Response.ok("Welcome to our sectrer res api").build();
         }else{
@@ -57,7 +55,6 @@ public class CredentialResource {
     public Response deleteUser(String email){
         Gson gson = new Gson();
         Credential credential = gson.fromJson(email, Credential.class);
-        
         if(credentialBean.deleteUser(credential) == 1){
             return Response.ok("Welcome to our sectrer res api").build();
         }else{
@@ -73,7 +70,7 @@ public class CredentialResource {
         
         //Credential credential = credentialBean.createCredential(Authorization);
         
-        System.out.println(credential.getUsername());
+        
         
         if(credentialBean.changeUsser(credential) == 1){
             return Response.ok("Welcome to our sectrer res api").build();

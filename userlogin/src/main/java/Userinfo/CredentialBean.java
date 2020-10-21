@@ -64,7 +64,7 @@ public class CredentialBean {
     public int deleteUser(Credential credential){
         try (Connection con = ConnectionFactory.getConnection()){
             Statement stmt = con.createStatement();
-            String sql = String.format("DELETE FROM users WHERE email='%s'", credential.getEmail());
+            String sql = String.format("DELETE * FROM users WHERE email='%s'", credential.getEmail());
             return stmt.executeUpdate(sql);
         } catch (Exception e) {
             return 0;

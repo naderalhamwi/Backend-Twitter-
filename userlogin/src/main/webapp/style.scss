@@ -2,6 +2,7 @@ body{
     margin: 0;
     padding: 0;
     height: 100vh;
+    user-select: none;
 }
 .mainlogin{
     display: grid;
@@ -80,8 +81,4 @@ body{
             }
         }
     }
-}
-
-.mainHpme{
-    
 }
