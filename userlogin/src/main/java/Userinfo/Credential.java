@@ -23,12 +23,6 @@ public class Credential {
         this.password = password;
     }
 
-    public Credential(String username, String password, String email) {
-        this.username = username;
-        this.password = password;
-        this.email = email;
-    }
-
     public Credential(String username, String password, String email, String phonenumber) {
         this.username = username;
         this.password = password;

@@ -30,6 +30,8 @@ public class CredentialResource {
     @GET
     public Response checkUser(@HeaderParam("Authorization") String authorization){
         Credential credential = credentialBean.createCredential(authorization);
+        System.out.println(credential.getEmail());
+        System.out.println(credential.getPassword());
         if(credentialBean.checkCredentials(credential)){
             return Response.ok("Welcome to our sectrer res api").build();
         }else{
@@ -44,7 +46,8 @@ public class CredentialResource {
         Credential credential = gson.fromJson(Passowrd, Credential.class);
         
         if(credentialBean.saveCredential(credential) == 1){
-           return Response.status(Response.Status.CREATED).build();
+           //return Response.status(Response.Status.CREATED).build();
+           return Response.ok().header("Access-Control-Allow-Origin","*").build();
         }else{
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
