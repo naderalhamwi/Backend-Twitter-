@@ -49,7 +49,7 @@ public class CredentialBean {
             String sql = String.format("SELECT * FROM users WHERE email='%s'", credential.getEmail());
             ResultSet data = stmt.executeQuery(sql);
             if(data.next()){
-                String bcryptHashString = data.getString("hashed_password");
+                String bcryptHashString = data.getString("password");
                 BCrypt.Result result = BCrypt.verifyer().verify(credential.getPassword().toCharArray(), bcryptHashString);
                 return result.verified;
             }else{

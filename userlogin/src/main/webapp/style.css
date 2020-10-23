@@ -1,3 +1,4 @@
+@charset "UTF-8";
 body {
   margin: 0;
   padding: 0;
@@ -17,25 +18,25 @@ body {
 
 .mainlogin #loginsection {
   background-color: #EAEAEA;
+  display: -ms-grid;
+  display: grid;
+      grid-template-areas: "title" "form";
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
-.mainlogin #loginsection button {
-  border: 1px solid black;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0);
-  position: absolute;
-  width: 145px;
-  height: 30px;
-  left: 800px;
-  top: 20px;
+.mainlogin #loginsection h2 {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: title;
+      justify-self: center;
 }
 
 .mainlogin #loginsection form {
-  position: absolute;
-  left: 258px;
-  top: 414px;
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: form;
 }
 
 .mainlogin #loginsection form input {
@@ -52,30 +53,31 @@ body {
   position: relative;
   width: 145px;
   left: 145px;
+  margin-bottom: 20px;
 }
 
 .mainlogin #rigistersection {
   background-color: #272822;
+  display: -ms-grid;
+  display: grid;
+      grid-template-areas: "title" "form";
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
-.mainlogin #rigistersection button {
+.mainlogin #rigistersection h2 {
   color: #F5732A;
-  border: 1px solid #FFFFFF;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0);
-  position: absolute;
-  width: 145px;
-  height: 30px;
-  left: 970px;
-  top: 20px;
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: title;
+      justify-self: center;
 }
 
 .mainlogin #rigistersection form {
-  position: absolute;
-  left: 1217px;
-  top: 333px;
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: form;
   color: white;
 }
 
@@ -95,5 +97,109 @@ body {
   position: relative;
   width: 145px;
   left: 145px;
+  margin-bottom: 20px;
+}
+
+.bodyAnvandareInloggad header {
+  background-color: #272822;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 20% 10%;
+      grid-template-columns: 1fr 20% 10%;
+      grid-template-areas: "name search singoutbutton";
+}
+
+.bodyAnvandareInloggad header h1 {
+  color: #F5732A;
+  margin: 2%;
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: name;
+}
+
+.bodyAnvandareInloggad header input {
+  border: none;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 10px;
+  height: 40%;
+  width: 100%;
+  margin: auto;
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: search;
+}
+
+.bodyAnvandareInloggad header button {
+  border: none;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 10px;
+  height: 40%;
+  width: 60%;
+  margin: auto;
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+  grid-area: singoutbutton;
+}
+
+.bodyAnvandareInloggad main {
+  margin: 1%;
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.bodyAnvandareInloggad main section {
+  display: -ms-grid;
+  display: grid;
+      grid-template-areas: "title . inläginfo" ". . likes" "content content content";
+  background-color: #EAEAEA;
+  margin: 1%;
+}
+
+.bodyAnvandareInloggad main section h2 {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: title;
+  margin: auto;
+}
+
+.bodyAnvandareInloggad main section #inlägginfo {
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+  grid-area: inläginfo;
+  margin: auto;
+}
+
+.bodyAnvandareInloggad main section #inlägglikes {
+  -ms-grid-row: 2;
+  -ms-grid-column: 3;
+  grid-area: likes;
+  margin: auto;
+}
+
+.bodyAnvandareInloggad main section #inläggcontent {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  grid-area: content;
+  margin: auto;
+}
+
+.bodyAnvandareInloggad footer {
+  background-color: #C4C4C4;
+}
+
+@media only screen and (max-width: 900px) {
+  .mainlogin {
+        grid-template-areas: "loginsection"  "rigistersection";
+  }
+  .bodyAnvandareInloggad header {
+    -ms-grid-columns: auto;
+        grid-template-columns: auto;
+  }
 }
 /*# sourceMappingURL=style.css.map */

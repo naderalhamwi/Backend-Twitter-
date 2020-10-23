@@ -10,16 +10,14 @@ document.getElementById("loginB").addEventListener("click", event=>{
 
 function saveData(){
   let form = document.getElementById("rigisterform");
-  let name = form.elements.name.value;
+  let name = form.elements.username.value;
   let password = form.elements.password.value;
   let email = form.elements.email.value;
   let phonenumber = form.elements.phoneNumber.value;
 
-  
-
   let data = {
     "username" : name,
-    "password": password,
+    "password": window.btoa(password),
     "email": email,
     "phonenumber": phonenumber
   };
@@ -58,36 +56,26 @@ function getData(){
 
   let data = {
     "email": email,
-    "password": password,
+    "password": window.btoa(password),
   };
-
-
   getMethod(data);
-
 }
 
 
 function getMethod(data){
-  let base64 = require('base-64');
+  fetch('http://localhost:8080/userlogin/resources/user',{
+    method: 'GET',
+    body: JSON.stringify(data),
+  })
+  .then((response) => {
+    window.open("Home.html", target = "_self");
+    return response.json();
+  })
+  .then((data) => {
 
+  })
+  .catch((e) => {
 
-let headers = new Headers();
+});
 
-//headers.append('Content-Type', 'text/json');
-headers.append('Authorization', 'Basic' + base64.encode(data[email] + ":" + data[password]));
-
-fetch('http://localhost:8080/userlogin/resources/user',{
-      method: 'GET',
-      headers
-    })
-    .then((response) => {
-      window.open("Home.html", target = "_self");
-      return response.json();
-    })
-    .then((data) => {
-
-    })
-    .catch((e) => {
-
-  });
 }

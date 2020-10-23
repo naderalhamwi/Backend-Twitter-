@@ -41,9 +41,9 @@ public class CredentialResource {
     
     @POST
     @Consumes(MediaType.TEXT_PLAIN)
-    public Response createUserJson(String Passowrd){
+    public Response createUserJson(String password){
         Gson gson = new Gson();
-        Credential credential = gson.fromJson(Passowrd, Credential.class);
+        Credential credential = gson.fromJson(password, Credential.class);
         
         if(credentialBean.saveCredential(credential) == 1){
            //return Response.status(Response.Status.CREATED).build();
